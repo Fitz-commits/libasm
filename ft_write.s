@@ -11,11 +11,8 @@ _ft_write:
     jc _error
     ret
 _error :
-    push r10
-    mov r10, rax
-    neg r10w
+    push rax
     call ___error
-    mov byte [rax], r10b
+    pop qword [rax]
     mov rax, -1
-    pop r10
     ret

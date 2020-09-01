@@ -12,14 +12,25 @@ extern char *ft_strdup(char *s);
 
 int		main()
 {
-	char *buf = "salut";
+	char *buf = ft_strdup("salut");
+	char poule[20];
 	int fd;
+	int fd2;
 	int value;
-	
+
+	fd2 = open ("./main.c", O_RDONLY);
+	value = ft_read(12, NULL, 10);
+	if (value > 0 )
+		poule[value] = 0;
+	printf("%s\n%d\n%d\n", poule, errno, value);
+	value = read(15, NULL, 10);
+	if (value > 0 )
+		poule[value] = 0;
+	printf("%s\n%d\n%d\n", poule, errno, value);
 	fd = open("lol", O_WRONLY | O_CREAT
 		| O_TRUNC , 0666);
-	value = ft_write(4, buf, 5);
+	value = ft_write(fd, NULL, 5);
 	printf("%d\n%d\n", errno, value);
-	value = write(4, buf, 5);
+	value = write(fd, NULL, 5);
 	printf("%d\n%d\n", errno, value);
 }

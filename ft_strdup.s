@@ -1,7 +1,7 @@
 extern _ft_strcpy
 extern _malloc
 extern _ft_strlen
-
+extern ___error
 global  _ft_strdup
 ; ft_stdupp(char *s {rdi})
 ; copy rdi r12
@@ -21,5 +21,9 @@ _ft_strdup:
     ret
 
 malloc_error:
+    pop rax
+    call ___error
+    pop qword [rax]
+    mov rax, 0
     ret
 
